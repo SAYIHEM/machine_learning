@@ -39,6 +39,7 @@ class XORMachine(Machine):
         plt.plot(model.predict(X))
         plt.show()
 
+
     def init(self):
         pass
 

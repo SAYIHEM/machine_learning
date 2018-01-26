@@ -24,7 +24,6 @@ class UpdatePlotCallback(Callback):
 
     def on_train_begin(self, logs=None):
         #plt.axis([0, 1, 0, ])
-        plt.plot(0, 0)
         plt.ion()
 
     def on_epoch_end(self, epoch, logs={}):
@@ -38,6 +37,9 @@ class UpdatePlotCallback(Callback):
         plt.pause(0.001)
         plt.show()
         plt.gcf().clear()
+
+    def on_train_end(self, logs=None):
+        plt.close()
 
         # if a is not None and b is not None:
         #     plt.plot(logs.get('loss'))
@@ -76,15 +78,15 @@ class WineQuality(Machine):
 
         # Fit the model
         update_plot = UpdatePlotCallback()
-        history = self.model.fit(X, Y, epochs=10, batch_size=5, callbacks=[update_plot])
+        epochs = 1000
+        history = self.model.fit(X, Y, epochs=epochs, batch_size=3, callbacks=[update_plot])
 
-
-        # calculate predictions
+        # calculate predictionslen
         test = numpy.array([[8.3,0.42,0.62,19.25,0.04,41,172,1.0002,2.98,0.67,9.7]]) # 5
         predictions = self.model.predict(X)
         plt.plot(predictions)
         plt.plot(Y)
-        plt.show()
+        plt.show(block=True)
 
     def evaluate(self):
 
