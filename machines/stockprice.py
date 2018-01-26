@@ -48,7 +48,7 @@ class UpdatePlotCallback(Callback):
         #     plt.plot(logs.get('val_loss'))
         #     plt.show()
 
-class WineQuality(Machine):
+class Stockpredictor(Machine):
 
 
     def __init__(self, data):
@@ -65,12 +65,12 @@ class WineQuality(Machine):
     def train(self):
 
         # split into input (X) and output (Y) variables
-        num_in = 11
+        num_in = 3
         X = self.data[:, 0:num_in]
-        Y = self.data[:, 11]
+        Y = self.data[:, 3]
 
-        X = X*0.003
-        Y = Y*0.003
+        X = X*0.0001
+        Y = Y*0.0001
 
         pp(X)
         pp(Y)
@@ -86,7 +86,7 @@ class WineQuality(Machine):
 
         # Compile model
         self.model.compile(loss='binary_crossentropy',
-                           optimizer=SGD(lr=0.05),
+                           optimizer=SGD(lr=0.01),
                            metrics=['accuracy'])
 
         # Fit the model
@@ -105,8 +105,5 @@ class WineQuality(Machine):
         plt.show(block=True)
 
     def evaluate(self):
-
-        raise NotImplemented
-        # evaluate the model
-        scores = self.model.evaluate(self.X, self.Y)
+        scores = self.model.evaluate(self.X, self.Y, verbose=0)
         print("\n%s: %.2f%%" % (self.model.metrics_names[1], scores[1] * 100))
