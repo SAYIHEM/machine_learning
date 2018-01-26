@@ -76,7 +76,7 @@ class WineQuality(Machine):
 
         # Fit the model
         update_plot = UpdatePlotCallback()
-        history = self.model.fit(X, Y, epochs=1000, batch_size=5, callbacks=[update_plot])
+        history = self.model.fit(X, Y, epochs=10, batch_size=5, callbacks=[update_plot])
 
 
         # calculate predictions
