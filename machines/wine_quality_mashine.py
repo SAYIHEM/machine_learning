@@ -80,7 +80,7 @@ class WineQuality(Machine):
 
 
         # calculate predictions
-        test = numpy.array([8.3,0.42,0.62,19.25,0.04,41,172,1.0002,2.98,0.67,9.7])
+        test = numpy.array([[8.3,0.42,0.62,19.25,0.04,41,172,1.0002,2.98,0.67,9.7]])
         print(test)
         predictions = self.model.predict(test)
 
