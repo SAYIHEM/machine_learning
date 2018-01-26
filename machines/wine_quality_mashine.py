@@ -69,22 +69,22 @@ class WineQuality(Machine):
         self.model = Sequential()
         self.model.add(Dense(12, input_dim=num_in, activation='relu'))
         self.model.add(Dense(8, activation='relu'))
-        self.model.add(Dense(1, activation='sigmoid'))
+        self.model.add(Dense(1, activation='relu'))
 
         # Compile model
         self.model.compile(loss='binary_crossentropy', optimizer='adam', metrics=['accuracy'])
 
         # Fit the model
         update_plot = UpdatePlotCallback()
-        history = self.model.fit(X, Y, epochs=10, batch_size=5, callbacks=[update_plot])
+        history = self.model.fit(X, Y, epochs=1000, batch_size=5, callbacks=[update_plot])
 
 
         # calculate predictions
-        test = numpy.array([[8.3,0.42,0.62,19.25,0.04,41,172,1.0002,2.98,0.67,9.7]])
-        print(test)
-        predictions = self.model.predict(test)
-
-        print(predictions)
+        test = numpy.array([[8.3,0.42,0.62,19.25,0.04,41,172,1.0002,2.98,0.67,9.7]]) # 5
+        predictions = self.model.predict(X)
+        plt.plot(predictions)
+        plt.plot(Y)
+        plt.show()
 
     def evaluate(self):
 
