@@ -1,0 +1,10 @@
+<OGRVRTDataSource>
+  <OGRVRTLayer name="rainfall-intensity-19602016">
+    <SrcDataSource relativeToVRT="1">rainfall-intensity-19602016.csv</SrcDataSource>
+    <GeometryType>wkbNone</GeometryType>
+    <Field name="Year" src="Year" type="String" />
+    <Field name="site" src="site" type="String" />
+    <Field name="r95ptot" src="r95ptot" type="String" />
+    <Field name="rx1day" src="rx1day" type="String" />
+  </OGRVRTLayer>
+</OGRVRTDataSource>
